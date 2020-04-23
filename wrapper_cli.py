@@ -14,6 +14,7 @@ parser.add_argument('-o', '--output', dest='export_dir', help='dir to export, de
                     default='.')
 parser.add_argument('-m', '--meta', dest='meta_file_name', help='specify the filename of metadata file(.xls)',
                     default=None)
+parser.add_argument('-a', '--auto_filter', dest='auto_filter', help='auto_filter ', default=True)
 args = parser.parse_args()
 
 if (args.file is None) ^ (args.directory is None):

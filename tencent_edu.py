@@ -96,12 +96,13 @@ class wrapper:
             print('[-]\tmetadata does not exists in {}'.format(os.path.split(filename)[1]))
             return None
         ex = self.__extract_from_url(url=metadata)
-        result = [os.path.split(filename)[1], ex.tokens['uin'][0], ex.tokens['term_id'][0], ex.tokens['ext'][0]]
+        # result = [os.path.split(filename)[1], ex.tokens['uin'][0], ex.tokens['term_id'][0], ex.tokens['ext'][0]]
+        result = [os.path.split(filename)[1], ex.tokens['uin'][0], ex.tokens['term_id'][0]]
 
         if self.metadata_debug:
             print('[+]\tMetadata of {}:'.format(os.path.split(filename)[1]))
-            print('[+]\tuin:{}\tterm_id:{}\text:{}'.format(ex.tokens['uin'][0], ex.tokens['term_id'][0],
-                                                           ex.tokens['ext'][0]))
+            # print('[+]\tuin:{}\tterm_id:{}\text:{}'.format(ex.tokens['uin'][0], ex.tokens['term_id'][0], ex.tokens['ext'][0]))
+            print('[+]\tuin:{}\tterm_id:{}'.format(ex.tokens['uin'][0], ex.tokens['term_id'][0]))
             print('[+]\targs:{}'.format(ex.queries))
             # print(result)
         return result
@@ -192,6 +193,7 @@ class wrapper:
             pass
         else:
             print('[+]\t', end='')
+        print(save_path)
         print('export to {} in {:.2f}ms'.format(save_filename, delta * 1e3))
 
     def process_db_file(self, db_filename: str):
@@ -238,6 +240,7 @@ class wrapper:
             else:
                 os.makedirs(save_root)
             save_data(save_path, {'Sheet1': meta_all})
+            print(save_path)
             print('[+]\tmetadata saved')
 
         else:
